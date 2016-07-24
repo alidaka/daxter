@@ -1,7 +1,6 @@
 Personal development notes as I'm (re-)learning some tools
 
 tmux
-
     "     vertical split
     %     horizontal split
 
@@ -12,5 +11,4 @@ tmux
     X     kill pane
 
 npm
-
     npm start
