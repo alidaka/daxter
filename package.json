@@ -1,0 +1,11 @@
+{
+  "name": "daxter",
+  "version": "0.1.0",
+  "description": "dashboard for Dexter apartment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"hook jasmine plz\" && exit 1",
+    "start": "node server.js"
+  },
+  "license": "ISC"
+}

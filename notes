@@ -1,0 +1,16 @@
+Personal development notes as I'm (re-)learning some tools
+
+tmux
+
+    "     vertical split
+    %     horizontal split
+
+    f     last window
+    C-f   last pane
+    c     new window
+
+    X     kill pane
+
+npm
+
+    npm start
