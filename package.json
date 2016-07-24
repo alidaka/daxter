@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "./node_modules/jasmine/bin/jasmine.js",
-    "start": "node server.js"
+    "start": "echo \"you must open index.html in browser...\" && exit 1"
   },
   "license": "ISC",
   "devDependencies": {
