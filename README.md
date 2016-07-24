@@ -1,4 +1,5 @@
-# daxter: a dashboard for the Dexter apartment
+# daxter
+### a dashboard for the Dexter apartment
 
 Using:
 - nodejs
