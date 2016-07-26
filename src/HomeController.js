@@ -42,11 +42,13 @@
         .attr("fill", "red")
         .attr("transform", `translate(${width/2}, ${height/2})`);
 
-      svg.append("text").text(date.toLocaleTimeString('en-US', {hour12: false}))
-        .attr("text-anchor", "middle")
+      var displayTime = date.toLocaleTimeString('en-US', {hour12: false});
+      var displayDate = dateFormat(date, "ddd mmm dd")
+      var text = svg.append("text")
         .attr("alignment-baseline", "central")
         .attr("transform", `translate(${width/2}, ${height/2})`);
-
+      text.append("tspan").text(displayTime).attr("x", -30).attr("y", "-10px");
+      text.append("tspan").text(displayDate).attr("x", -30).attr("y", "10px");
     }
   };
 
