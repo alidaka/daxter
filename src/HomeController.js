@@ -44,10 +44,10 @@
         .attr("alignment-baseline", "central")
         .attr("transform", `translate(${width/2}, ${height/2})`);
 
-      var displayTime = date.toLocaleTimeString('en-US', {hour12: false});
+      var displayTime = dateFormat(date, "HH:MM:ss");
       text.append("tspan").text(displayTime).attr("x", -30).attr("y", "-10px");
 
-      var displayDate = dateFormat(date, "ddd mmm dd")
+      var displayDate = dateFormat(date, "ddd mmm dd");
       text.append("tspan").text(displayDate).attr("x", -30).attr("y", "10px");
     }
 
