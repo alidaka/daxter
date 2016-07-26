@@ -3,7 +3,7 @@ describe("App", function() {
 
   beforeEach(function() {
     this.root = document.createElement("div");
-    this.subject = new daxter.App(this.root);
+    this.subject = new daxter.App(this.root, 0, 0);
   });
 
   describe("When the app launches", function() {
