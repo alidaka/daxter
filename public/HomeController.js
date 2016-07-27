@@ -80,6 +80,5 @@
         .attr("fill", "black")
         .attr("transform", `translate(${x+width/2}, ${y+height/2})`);
     }
-
   };
 })();
