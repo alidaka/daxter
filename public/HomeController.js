@@ -5,7 +5,7 @@
     appendTo(container, width, height) {
       this._root = this.createDom(width, height);
       container.appendChild(this._root);
-    }
+    };
 
     createDom(width, height) {
       var dom = document.createElement("div");
@@ -35,7 +35,7 @@
         .attr("height", "100%")
         .attr("fill", "#cef")
         .attr("fill-opacity", "0.2");
-    }
+    };
 
     _addClock(svg, x, y, width, height, date) {
       this.__debug_highlight_region(svg, x, y, width, height);
@@ -49,15 +49,30 @@
 
       var displayDate = dateFormat(date, "ddd mmm dd");
       text.append("tspan").text(displayDate).attr("x", -30).attr("y", "10px");
-    }
+    };
 
     _addWeather(svg, x, y, width, height) {
+      var data = this._getWeatherData();
       this.__debug_highlight_region(svg, x, y, width, height);
-    }
+    };
+
+    _getWeatherData() {
+    };
+
+    _get(uri, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          callback(JSON.parse(xhr.responseText));
+        }
+      };
+      xhr.open("GET", uri, true);
+      xhr.send(null);
+    };
 
     _addBuses(svg, x, y, width, height) {
       this.__debug_highlight_region(svg, x, y, width, height);
-    }
+    };
 
     __debug_highlight_region(svg, x, y, width, height) {
       var radius = Math.min(width, height) / 2;
@@ -79,6 +94,6 @@
         .attr("d", arc)
         .attr("fill", "black")
         .attr("transform", `translate(${x+width/2}, ${y+height/2})`);
-    }
+    };
   };
 })();
