@@ -42,7 +42,7 @@
 
       var text = svg.append("text")
         .attr("alignment-baseline", "central")
-        .attr("transform", `translate(${width/2}, ${height/2})`);
+        .attr("transform", `translate(${x + width/2}, ${y + height/2})`);
 
       var displayTime = dateFormat(date, "HH:MM:ss");
       text.append("tspan").text(displayTime).attr("x", -30).attr("y", "-10px");
@@ -52,8 +52,14 @@
     };
 
     _addWeather(svg, x, y, width, height) {
-      var data = this._getWeatherData();
       this.__debug_highlight_region(svg, x, y, width, height);
+
+      var data = this._getWeatherData();
+
+      var text = svg.append("text")
+        .attr("alignment-baseline", "central")
+        .attr("transform", `translate(${x + width/2}, ${y + height/2})`);
+      text.append("tspan").text("weather").attr("x", -30).attr("y", "10px");
     };
 
     _getWeatherData() {
@@ -72,6 +78,11 @@
 
     _addBuses(svg, x, y, width, height) {
       this.__debug_highlight_region(svg, x, y, width, height);
+
+      var text = svg.append("text")
+        .attr("alignment-baseline", "central")
+        .attr("transform", `translate(${x + width/2}, ${y + height/2})`);
+      text.append("tspan").text("bus").attr("x", -30).attr("y", "10px");
     };
 
     __debug_highlight_region(svg, x, y, width, height) {
