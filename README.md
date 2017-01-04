@@ -10,6 +10,11 @@
 - jasmine
 - d3
 
+## Getting Started
+1. Install nodejs
+2. npm install
+3. npm start
+
 ## Features
 
 /---------------------------\
