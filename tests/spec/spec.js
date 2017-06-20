@@ -3,12 +3,12 @@ describe("App", function() {
 
   beforeEach(function() {
     this.root = document.createElement("div");
-    this.subject = new daxter.App(this.root, 0, 0);
+    daxter.boot(this.root);
   });
 
   describe("When the app launches", function() {
     it("should show the home controller", function() {
-      var controller = this.subject._controller;
+      var controller = daxter._controller;
       expect(controller).toEqual(jasmine.any(daxter.HomeController));
       expect(controller._root.parentNode).toBe(this.root);
     });
