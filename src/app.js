@@ -25,7 +25,8 @@ app.get('/weather', function (req, res) {
     var conciseResponse = {
       'current': json.currently.temperature,
       'todayHigh': json.daily.data[0].temperatureMax,
-      'hourly': json.hourly.data.map(hourify)
+      'hourly': json.hourly.data.map(hourify),
+      'summary': json.daily.icon
     };
 
     res.json(conciseResponse);

@@ -28,6 +28,7 @@
       return dom;
     };
 
+    // TODO: these should be their own models :(
     _createClock(date) {
       var dom = document.createElement("div");
       dom.className = "item";
@@ -39,30 +40,32 @@
       return dom;
     };
 
+    // TODO: these should be their own models :(
     _createWeather() {
       var dom = document.createElement("div");
       dom.className = "item";
+      dom.style["flex"] = 2;
 
-      var data = this._getWeatherData();
-      dom.innerHTML = data;
+      this._get("/weather", this._updateWeather, dom);
       return dom;
     };
 
-    _getWeatherData() {
-      return "weather";
+    _updateWeather(weather, dom) {
+      dom.innerHTML = weather.todayHigh + "' high<br/>" + weather.summary + " today";
     };
 
-    _get(uri, callback) {
+    _get(uri, callback, param) {
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          callback(JSON.parse(xhr.responseText));
+          callback(JSON.parse(xhr.responseText), param);
         }
       };
       xhr.open("GET", uri, true);
       xhr.send(null);
     };
 
+    // TODO: these should be their own models :(
     _createBuses(svg, x, y, width, height) {
       var dom = document.createElement("div");
       dom.className = "item";
