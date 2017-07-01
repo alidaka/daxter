@@ -20,3 +20,10 @@ file:///home/augustus/code/daxter/tests/SpecRunner.html
 
 some bug about script relative paths?
 http://stackoverflow.com/questions/27464168/how-to-include-scripts-located-inside-the-node-modules-folder
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+file:///home/augustus/code/daxter/tests/SpecRunner.html
+http://localhost:3000/
+https://api.forecast.io/forecast/d6a6b60ab0b7531a26176cd9af190b32/47.642396,-122.344612
+
+possible overkill on flexbox vertical centering?
