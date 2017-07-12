@@ -4,7 +4,7 @@
   "description": "dashboard for Dexter apartment",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/jasmine/bin/jasmine.js",
+    "test": "jasmine",
     "start": "node src/app.js"
   },
   "license": "ISC",
