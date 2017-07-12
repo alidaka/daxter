@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "test-runner": "http-server ./tests -a localhost"
   },
   "license": "ISC",
   "devDependencies": {
