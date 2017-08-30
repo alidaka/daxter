@@ -4,7 +4,8 @@
   window.daxter = {};
 
   daxter.boot = function(root) {
-    daxter._controller = new daxter.HomeController();
+    var clock = new daxter.ClockController(new Date());
+    daxter._controller = new daxter.HomeController(clock);
     daxter._controller.appendTo(root);
   };
 }());

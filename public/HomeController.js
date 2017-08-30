@@ -2,6 +2,10 @@
   "use strict";
 
   daxter.HomeController = class {
+    constructor(clock) {
+      this._clock = clock;
+    };
+
     appendTo(container) {
       this._root = this.createDom();
       container.appendChild(this._root);
@@ -15,7 +19,7 @@
       left.className = "container";
       left.style["flex-direction"] = "column";
 
-      left.appendChild(this._createClock(new Date()));
+      left.appendChild(this._clock.createDom());
       left.appendChild(this._createWeather());
       dom.appendChild(left);
 
@@ -24,18 +28,6 @@
 
       right.appendChild(this._createBuses());
       dom.appendChild(right);
-
-      return dom;
-    };
-
-    // TODO: these should be their own models :(
-    _createClock(date) {
-      var dom = document.createElement("div");
-      dom.className = "item";
-
-      var displayTime = dateFormat(date, "HH:MM:ss");
-      var displayDate = dateFormat(date, "ddd mmm dd");
-      dom.innerHTML = displayTime + "<br/>" + displayDate;
 
       return dom;
     };
