@@ -1,0 +1,11 @@
+language: node_js
+deploy:
+  provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: alidaka+pws@gmail.com
+  password:
+    secure: fVs0YmZrLJeNQGUlR19KSTH1l9Z70OSPHhHDF3gzVn+hqde3IWpvcmN68xyaBv7x9L3T9RW97g9w3/woqhipm17gwhNC5O0mvuOJnqx8pZT6ueN+bGDLE7+FI3XxpYm4qeLAZDPofuh4pQHZrcVzjj5xOj2jDzMSUJg93jTY9Cb1pk82/1j3oaD9SCT1XFTJYHjJS8pmriY8yIE74kdMRZjzRsiJCG6k1cBG9GyKALZD2IRFWwvszZKLEzHmYN6QiolPEXFA69HyLn9gLMZn3XskGRHdxyxC7L48/vMZLDchudVtcz8Ei00Xu3hHwpIaPqpxkuQm55qwhI3dVN+fVik0B3veMegO9+HaZiBQhe3+Hk84uetAb7rbw+CTK21zMiA3swjLob2zUXxEfkKY72HR3Gi6NqTYg/hVxLYUBrlSrhkhUAaZM6voJ1U335Vi4Fjhymcte/LVXVumjen5uM5vbdHD3Ztz2Sb824dIXOkP+75s9STc607w/t+Y1TUhh9Njd6R4lI1jbUn5YYKTtK5qMG7FsuM0v6iKl0ieX2PdCRHqF9IaZ2X7caJFMaYIbF8hJpIxPgSJD0w4Po0Ip+4rjgwmcvFSAeGh3OyydjLObW7VpbOUA5N29gt1sh+aRYr1Ga0FZfoA3fv+6XRin3Jr9YvN1C+oFM+wV1ZY+Hc=
+  organization: appplace
+  space: development
+  on:
+    repo: alidaka/daxter

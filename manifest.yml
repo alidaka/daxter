@@ -1,0 +1,3 @@
+applications:
+- name: daxter
+  memory: 128M
