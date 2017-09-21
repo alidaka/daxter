@@ -28,7 +28,7 @@
 \---------------------------/
 ```
 
-tick
+tick - something like setInterval(function() { widget.update()}, widget.updateInterval);
 refresh/dynamic sizing
 Transitions?
 
