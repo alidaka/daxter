@@ -1,9 +1,11 @@
 (function() {
   "use strict";
 
-  daxter.HomeController = class {
-    constructor(clock) {
+  daxter.HomeController = class extends daxter.Controller {
+    constructor(clock, weather) {
+      super();
       this._clock = clock;
+      this._weather = weather;
     };
 
     appendTo(container) {
@@ -19,8 +21,14 @@
       left.className = "container";
       left.style["flex-direction"] = "column";
 
-      left.appendChild(this._clock.createDom());
-      left.appendChild(this._createWeather());
+      var clockDom = this._clock.createDom();
+      clockDom.style["flex"] = 1;
+      left.appendChild(clockDom);
+
+      var weatherDom = this._weather.createDom();
+      weatherDom.style["flex"] = 1;
+      left.appendChild(weatherDom);
+
       dom.appendChild(left);
 
       var right = document.createElement("div");
@@ -30,31 +38,6 @@
       dom.appendChild(right);
 
       return dom;
-    };
-
-    // TODO: these should be their own models :(
-    _createWeather() {
-      var dom = document.createElement("div");
-      dom.className = "item";
-      dom.style["flex"] = 2;
-
-      this._get("/weather", this._updateWeather, dom);
-      return dom;
-    };
-
-    _updateWeather(weather, dom) {
-      dom.innerHTML = weather.todayHigh + "' high<br/>" + weather.summary + " today";
-    };
-
-    _get(uri, callback, param) {
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          callback(JSON.parse(xhr.responseText), param);
-        }
-      };
-      xhr.open("GET", uri, true);
-      xhr.send(null);
     };
 
     // TODO: these should be their own models :(

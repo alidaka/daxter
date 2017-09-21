@@ -1,8 +1,9 @@
 (function() {
   "use strict";
 
-  daxter.ClockController = class {
+  daxter.ClockController = class extends daxter.Controller {
     constructor(date) {
+      super();
       this._date = date;
     };
 

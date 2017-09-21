@@ -5,7 +5,9 @@
 
   daxter.boot = function(root) {
     var clock = new daxter.ClockController(new Date());
-    daxter._controller = new daxter.HomeController(clock);
+    var weather = new daxter.WeatherController();
+
+    daxter._controller = new daxter.HomeController(clock, weather);
     daxter._controller.appendTo(root);
   };
 }());
