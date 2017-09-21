@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/alidaka/daxter.svg?branch=master" />
+
 # daxter
 ## a dashboard for the Dexter apartment
 
