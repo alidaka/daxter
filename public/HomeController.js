@@ -28,7 +28,7 @@
       left.appendChild(clockDom);
 
       var weatherDom = this._weather.createDom();
-      weatherDom.style["flex"] = 1;
+      weatherDom.style["flex"] = 2;
       left.appendChild(weatherDom);
 
       dom.appendChild(left);

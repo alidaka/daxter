@@ -16,7 +16,7 @@
     };
 
     _updateWeather(weather, dom) {
-      dom.innerHTML = weather.todayHigh + "' high<br/>" + weather.summary + " today";
+      dom.innerHTML = weather.todayHigh + "° high<br/>" + weather.summary + " today";
     };
   };
 })();
