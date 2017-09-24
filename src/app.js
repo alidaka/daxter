@@ -13,12 +13,13 @@ app.get('/weather', function (req, res) {
   var key = process.env.FORECAST_KEY;
   var coords = '47.642396,-122.344612'
 
-  var uri = `${endpoint}/${key}/${coords}`
+  var uri = `${endpoint}/${key}/${coords}?exclude=flags,alerts,minutely`
   httpsGet(uri, function(json) {
     var hourify = function(hour) {
       return {
         'time': hour.time,
-        'temperature': hour.temperature
+        'temperature': hour.temperature,
+        'summary': hour.icon
       };
     };
 
