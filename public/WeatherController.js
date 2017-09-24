@@ -18,7 +18,7 @@
 
     _updateWeather(weather, dom) {
       var title = document.createElement("div");
-      title.innerHTML = weather.todayHigh + "° high<br/>" + weather.summary + " today";
+      title.innerHTML = weather.todayHigh.toFixed(0) + "° high<br/>" + weather.summary + " today";
       title.className = "item";
       title.style["flex"] = 1;
       dom.appendChild(title);
@@ -48,17 +48,9 @@
           },
           scales: {
             xAxes: [{
-              type: "time",
-              display: true,
-              scaleLabel: {
-                display: true
-              }
+              type: "time"
             }],
             yAxes: [{
-              display: true,
-              scaleLabel: {
-                display: true
-              },
               ticks: {
                 suggestedMin: 40,
                 suggestedMax: 80
