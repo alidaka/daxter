@@ -65,7 +65,9 @@
     };
 
     _toggleFullscreen(dom) {
-      var isFullscreen = document.isFullscreen || document.msFullscreenElement || document.mozFullScreen || document.webkitIsFullScreen;
+      var isFullscreen = document.isFullscreen || document.msFullscreenElement ||
+        document.mozFullScreen || document.webkitIsFullScreen;
+
       if (isFullscreen) {
         this._exitFullscreen();
       } else {
