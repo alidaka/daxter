@@ -39,7 +39,62 @@
       right.className = "container";
       dom.appendChild(right);
 
+      var overlay = this._createOverlay(dom);
+      dom.appendChild(overlay);
+
       return {dom: dom, left: left, right: right};
+    };
+
+    _createOverlay(dom) {
+      var overlay = document.createElement("div");
+      overlay.className = "overlay";
+
+      var fullscreenButton = document.createElement("span");
+      fullscreenButton.classList.add("fa");
+      fullscreenButton.classList.add("fa-arrows-alt");
+      fullscreenButton.classList.add("fa-1");
+
+      var that = this;
+      fullscreenButton.onclick = function() {
+        that._toggleFullscreen(dom);
+      };
+
+      overlay.appendChild(fullscreenButton);
+
+      return overlay;
+    };
+
+    _toggleFullscreen(dom) {
+      var isFullscreen = document.isFullscreen || document.msFullscreenElement || document.mozFullScreen || document.webkitIsFullScreen;
+      if (isFullscreen) {
+        this._exitFullscreen();
+      } else {
+        this._enterFullscreen(dom);
+      }
+    };
+
+    _enterFullscreen(dom) {
+      if (dom.requestFullscreen) {
+        dom.requestFullscreen();
+      } else if (dom.msRequestFullscreen) {
+        dom.msRequestFullscreen();
+      } else if (dom.mozRequestFullScreen) {
+        dom.mozRequestFullScreen();
+      } else if (dom.webkitRequestFullscreen) {
+        dom.webkitRequestFullscreen();
+      }
+    };
+
+    _exitFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
     };
   };
 })();
