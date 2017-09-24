@@ -9,40 +9,37 @@
       this._bus = bus;
     };
 
-    appendTo(container) {
-      this._root = this.createDom();
-      container.appendChild(this._root);
-    };
-
     createDom() {
-      var dom = document.createElement("div");
-      dom.className = "dashboard";
-
-      // left
-      var left = document.createElement("div");
-      left.className = "container";
-      left.style["flex-direction"] = "column";
+      var layout = this._createLayout();
 
       var clockDom = this._clock.createDom();
       clockDom.style["flex"] = 1;
-      left.appendChild(clockDom);
+      layout.left.appendChild(clockDom);
 
       var weatherDom = this._weather.createDom();
       weatherDom.style["flex"] = 2;
-      left.appendChild(weatherDom);
-
-      dom.appendChild(left);
-
-      // right
-      var right = document.createElement("div");
-      right.className = "container";
+      layout.left.appendChild(weatherDom);
 
       var busDom = this._bus.createDom();
-      right.appendChild(busDom);
+      layout.right.appendChild(busDom);
 
+      return layout.dom;
+    };
+
+    _createLayout() {
+      var dom = document.createElement("div");
+      dom.className = "dashboard";
+
+      var left = document.createElement("div");
+      left.className = "container";
+      left.style["flex-direction"] = "column";
+      dom.appendChild(left);
+
+      var right = document.createElement("div");
+      right.className = "container";
       dom.appendChild(right);
 
-      return dom;
+      return {dom: dom, left: left, right: right};
     };
   };
 })();

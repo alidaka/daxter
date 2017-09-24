@@ -9,6 +9,7 @@
     var bus = new daxter.BusController();
 
     daxter._controller = new daxter.HomeController(clock, weather, bus);
-    daxter._controller.appendTo(root);
+    var dom = daxter._controller.createDom();
+    root.appendChild(dom);
   };
 }());
