@@ -16,26 +16,75 @@
       return dom;
     };
 
+
     _updateWeather(weather, dom) {
-      var title = document.createElement("div");
-      title.innerHTML = Math.trunc(weather.current) + "°<br/>" + weather.summary + " today";
-      title.className = "item";
-      title.style["flex"] = 1;
-      dom.appendChild(title);
+      this._addTitle(weather, dom);
+      this._addChart(weather, dom);
+    };
+
+    _iconFor(summary) {
+      var icon = document.createElement("span");
+      icon.classList.add("fa");
+      icon.classList.add("fa-arrows-alt");
+      icon.classList.add("fa-1");
+      return icon;
+    }
+
+    _spacer() {
+      var spacer = document.createElement("div");
+      spacer.className = "item";
+      return spacer;
+    }
+
+    _addTitle(weather, dom) {
+      var titleRow = document.createElement("div");
+      titleRow.className = "container";
+      titleRow.appendChild(this._spacer());
+
+      var forecastHours = 4;
+      var current = document.createElement("div");
+      current.className = "container";
+      current.style["flex-direction"] = "column";
+      current.style["vertical-margin"] = 0;
+        var currentTop = document.createElement("div");
+        currentTop.className = "container";
+          var currentTemp = document.createElement("div");
+          currentTemp.innerHTML = Math.trunc(weather.currentTemp) + "°";
+          currentTemp.className = ".item";
+          currentTop.appendChild(currentTemp);
+          var currentIcon = this._iconFor(weather);
+          currentIcon.classList.add(".item");
+          currentTop.appendChild(currentIcon);
+        current.appendChild(currentTop);
+        var currentText = document.createElement("div");
+        currentText.innerHTML = weather.currentSummary;
+        current.appendChild(currentText);
+      current.style["flex"] = 1 + forecastHours;
+      titleRow.appendChild(current);
+      titleRow.appendChild(this._spacer());
+
+      for (var i = 0; i < forecastHours; i++) {
+        var daily = document.createElement("div");
+        daily.innerHTML = Math.trunc(weather.hourly[i].temperature) + "°<br/>" + weather.hourly[i].summary;
+        daily.className = "container";
+        daily.classList.add("mini");
+        titleRow.appendChild(daily);
+        titleRow.appendChild(this._spacer());
+      }
+
+      dom.appendChild(titleRow);
 
       var filler = document.createElement("div");
       filler.style["flex"] = 2;
       dom.appendChild(filler);
+    }
 
-      this._attachChart(weather, dom);
-    };
-
-    _attachChart(weather, dom) {
+    _addChart(weather, dom) {
       var data = weather.hourly.map(function(hour) {
         return { t: hour.time * 1000, y: hour.temperature };
       }).slice(0, 16);
 
-      var high = weather.todayHigh;
+      var high = weather.high;
       var blue = 255 * (1 - (Math.max(0, high - 40) / 40));
       var red = 255 * (Math.max(0, high - 40) / 40);
       var backgroundColor = "rgba(" + Math.trunc(red) + ", 0, " + Math.trunc(blue) + ", .5)";

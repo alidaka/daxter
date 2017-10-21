@@ -24,10 +24,12 @@ app.get('/weather', function (req, res) {
     };
 
     var conciseResponse = {
-      'current': json.currently.temperature,
-      'todayHigh': json.daily.data[0].temperatureMax,
-      'hourly': json.hourly.data.map(hourify),
-      'summary': json.daily.icon
+      'currentTemp': json.currently.temperature,
+      'currentSummary': json.currently.summary,
+      'high': json.daily.data[0].temperatureMax,
+      'low': json.daily.data[0].temperatureMin,
+      'summary': json.daily.summary,
+      'hourly': json.hourly.data.map(hourify)
     };
 
     res.json(conciseResponse);
