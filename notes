@@ -1,5 +1,3 @@
-Personal development notes as I'm (re-)learning some tools
-
 npm
     npm start
     npm run fake
@@ -7,20 +5,7 @@ npm
 Weatherbus sample
 <https://github.com/seattle-beach/weatherbus-web/blob/4929804a515809f4def705417cc8c1c7d1a09a0f/src/makeRestCall.js>
 
-file:///home/augustus/code/daxter/tests/SpecRunner.html
-
-some bug about script relative paths?
-http://stackoverflow.com/questions/27464168/how-to-include-scripts-located-inside-the-node-modules-folder
-
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-file:///home/augustus/code/daxter/tests/SpecRunner.html
-http://localhost:3000/
-https://api.forecast.io/forecast/d6a6b60ab0b7531a26176cd9af190b32/47.642396,-122.344612
-
 possible overkill on flexbox vertical centering?
-
-find the right stop (GPS coordinates should be about right):
-http://api.pugetsound.onebusaway.org/api/where/stops-for-location.xml?key=TEST&lat=47.643843&lon=-122.345927
 
 weather.json
 https://api.forecast.io/forecast/$FORECAST_KEY/47.642396,-122.344612
@@ -28,5 +13,11 @@ https://api.forecast.io/forecast/$FORECAST_KEY/47.642396,-122.344612
 oba.json
 http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_259.json?key=$OBA_KEY
 
+find the right stop (GPS coordinates should be about right):
+http://api.pugetsound.onebusaway.org/api/where/stops-for-location.xml?key=TEST&lat=47.643843&lon=-122.345927
+
 Font Awesome:
 http://fontawesome.io/icon/arrows-alt
+
+TODO
+cache client js
