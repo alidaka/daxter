@@ -12,9 +12,9 @@ app.get('/', function (req, res) {
 app.get('/weather', function (req, res) {
   var endpoint = process.env.FORECAST_ENDPOINT;
   var key = process.env.FORECAST_KEY;
-  var coords = '47.642396,-122.344612'
+  var coords = '47.642396,-122.344612';
 
-  var uri = `${endpoint}/${key}/${coords}?exclude=flags,alerts,minutely`
+  var uri = `${endpoint}/${key}/${coords}?exclude=flags,alerts,minutely`;
   httpsGet(uri, function(json) {
     var hourify = function(hour) {
       return {
@@ -38,7 +38,14 @@ app.get('/weather', function (req, res) {
 });
 
 app.get('/buses', function (req, res) {
-  res.json('fdfd World!');
+  var endpoint = process.env.OBA_ENDPOINT;
+  var key = process.env.OBA_KEY;
+  var stopId = '1_259'; // TODO: verify stop ID?
+
+  var uri = `${endpoint}/where/arrivals-and-departures-for-stop/${stopId}.json?key=${key}`;
+  httpsGet(uri, function(json) {
+    res.json(json);
+  });
 });
 
 var port = process.env.PORT || 3000;
@@ -50,7 +57,7 @@ app.listen(port, function () {
 httpsGet = function(uri, callback) {
   var fake = process.env.FAKE || false;
   if (fake) {
-    var fixture = 'tests/data/' + (uri.includes('forecast') ? 'weather.json' : 'bus.json');
+    var fixture = 'tests/data/' + (uri.includes('forecast') ? 'weather.json' : 'oba.json');
 
     console.log(`Loading forecast data from ${fixture}...`);
     var data = fs.readFileSync(fixture, 'utf8');
