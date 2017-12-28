@@ -2,6 +2,7 @@ Personal development notes as I'm (re-)learning some tools
 
 npm
     npm start
+    npm run fake
 
 Weatherbus sample
 <https://github.com/seattle-beach/weatherbus-web/blob/4929804a515809f4def705417cc8c1c7d1a09a0f/src/makeRestCall.js>

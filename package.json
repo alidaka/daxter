@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jasmine",
     "start": "node src/app.js",
+    "fake": "FAKE=true node src/app.js",
     "test-runner": "http-server ./tests -a localhost"
   },
   "license": "ISC",

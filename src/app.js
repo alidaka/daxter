@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var https = require('https');
+var fs = require('fs');
 
 app.use(express.static('public'));
 
@@ -47,6 +48,17 @@ app.listen(port, function () {
 
 
 httpsGet = function(uri, callback) {
+  var fake = process.env.FAKE || false;
+  if (fake) {
+    var fixture = 'tests/data/' + (uri.includes('forecast') ? 'weather.json' : 'bus.json');
+
+    console.log(`Loading forecast data from ${fixture}...`);
+    var data = fs.readFileSync(fixture, 'utf8');
+    var json = JSON.parse(data);
+    callback(json);
+    return;
+  }
+
   https.get(uri, function(result) {
     var data = '';
 
