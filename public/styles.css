@@ -45,3 +45,7 @@ html, body {
   height: 100%;
   position: absolute;
 }
+
+.buses {
+  flex-direction: column,
+}
