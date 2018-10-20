@@ -1,8 +1,8 @@
 var express = require('express');
-var app = express();
 var https = require('https');
 var fs = require('fs');
 
+var app = express();
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
@@ -20,13 +20,14 @@ app.get('/weather', function (req, res) {
       return {
         'time': hour.time,
         'temperature': hour.temperature,
-        'summary': hour.icon
+        'icon': hour.icon
       };
     };
 
     var response = {
       'currentTemp': json.currently.temperature,
       'currentSummary': json.currently.summary,
+      'icon': json.currently.icon,
       'high': json.daily.data[0].temperatureMax,
       'low': json.daily.data[0].temperatureMin,
       'summary': json.daily.summary,

@@ -65,7 +65,7 @@
 
       for (var i = 0; i < forecastHours; i++) {
         var daily = document.createElement("div");
-        daily.innerHTML = Math.trunc(weather.hourly[i].temperature) + "°<br/>" + weather.hourly[i].summary;
+        daily.innerHTML = Math.trunc(weather.hourly[i].temperature) + "°<br/>" + weather.hourly[i].icon;
         daily.className = "container";
         daily.classList.add("mini");
         titleRow.appendChild(daily);
