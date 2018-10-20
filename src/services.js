@@ -58,7 +58,6 @@ exports.buses = function (req, res) {
       };
     };
 
-    // TODO: sort
     var response = {
       'buses': json.data.entry.arrivalsAndDepartures
         .map(busify)

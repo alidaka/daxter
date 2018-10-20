@@ -4,10 +4,6 @@ const services = require('./services.js');
 var app = express();
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-  res.send('fdfd World!');
-});
-
 app.get('/weather', services.weather);
 
 app.get('/buses', services.buses);
