@@ -22,10 +22,47 @@
       this._addChart(weather, dom);
     };
 
-    _iconFor(summary) {
+    _iconFor(text) {
+      var faClass;
+      switch (text) {
+        case 'clear-day':
+          faClass = 'fa-sun';
+          break;
+        case 'clear-night':
+          faClass = 'fa-moon';
+          break;
+        case 'rain':
+          faClass = 'fa-tint';
+          break;
+        case 'snow':
+          faClass = 'fa-snowflake';
+          break;
+        case 'sleet':
+          faClass = 'fa-snowflake';
+          break;
+        case 'wind':
+          faClass = 'fa-wind';
+          break;
+        case 'fog':
+          faClass = 'fa-cloud';
+          break;
+        case 'cloudy':
+          faClass = 'fa-cloud';
+          break;
+        case 'partly-cloudy-day':
+          faClass = 'fa-cloud-sun';
+          break;
+        case 'partly-cloudy-night':
+          faClass = 'fa-cloud-moon';
+          break;
+        default:
+          faClass = 'fa-arrows-alt';
+          break;
+      }
+
       var icon = document.createElement("span");
       icon.classList.add("fa");
-      icon.classList.add("fa-arrows-alt");
+      icon.classList.add(faClass);
       icon.classList.add("fa-1");
       return icon;
     }
@@ -52,20 +89,18 @@
           currentTemp.innerHTML = Math.trunc(weather.currentTemp) + "°";
           currentTemp.className = ".item";
           currentTop.appendChild(currentTemp);
-          var currentIcon = this._iconFor(weather);
+          var currentIcon = this._iconFor(weather.icon);
           currentIcon.classList.add(".item");
           currentTop.appendChild(currentIcon);
         current.appendChild(currentTop);
-        var currentText = document.createElement("div");
-        currentText.innerHTML = weather.currentSummary;
-        current.appendChild(currentText);
       current.style["flex"] = 1 + forecastHours;
       titleRow.appendChild(current);
       titleRow.appendChild(this._spacer());
 
       for (var i = 0; i < forecastHours; i++) {
         var daily = document.createElement("div");
-        daily.innerHTML = Math.trunc(weather.hourly[i].temperature) + "°<br/>" + weather.hourly[i].icon;
+        daily.innerHTML = Math.trunc(weather.hourly[i].temperature) + "°";
+        daily.appendChild(this._iconFor(weather.hourly[i].icon));
         daily.className = "container";
         daily.classList.add("mini");
         titleRow.appendChild(daily);
