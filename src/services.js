@@ -37,26 +37,6 @@ exports.buses = function (req, res) {
 
   var uri = `${endpoint}/api/where/arrivals-and-departures-for-stop/${stopId}.json?key=${key}`;
   http.get(uri, function(json) {
-    var busify = function(entry) {
-      var status = 'unknown';
-      var time = entry.scheduledArrivalTime;
-      var delta = 0;
-
-      if (entry.predicted && entry.predictedTime !== null) {
-        time = entry.predictedArrivalTime;
-        delta = Math.round((time - entry.scheduledArrivalTime) / 1000 / 60);
-
-        if (delta > 0)      { status = `${Math.abs(delta)}m delay`; }
-        else if (delta < 0) { status =  `${Math.abs(delta)}m early`; }
-        else                { status = 'on schedule'; }
-      }
-
-      return {
-        'status': status,
-        'time': time,
-      };
-    };
-
     var response = {
       'buses': json.data.entry.arrivalsAndDepartures
         .map(busify)
@@ -66,3 +46,24 @@ exports.buses = function (req, res) {
     res.json(response);
   });
 }
+
+const busify = function(entry) {
+  var status = 'unknown';
+  var time = entry.scheduledArrivalTime;
+  var delta = 0;
+
+  if (entry.predicted && entry.predictedTime !== null) {
+    time = entry.predictedArrivalTime;
+    delta = Math.round((time - entry.scheduledArrivalTime) / 1000 / 60);
+
+    if (delta > 0)      { status = `${Math.abs(delta)}m delay`; }
+    else if (delta < 0) { status =  `${Math.abs(delta)}m early`; }
+    else                { status = 'on schedule'; }
+  }
+
+  return {
+    'name': entry.routeShortName,
+    'status': status,
+    'time': time,
+  };
+};

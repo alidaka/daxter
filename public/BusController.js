@@ -2,8 +2,9 @@
   "use strict";
 
   daxter.BusController = class extends daxter.Controller {
-    constructor() {
+    constructor(date) {
       super();
+      this._date = date;
     };
 
     createDom() {
@@ -19,10 +20,11 @@
       for (var i = 0; i < buses.buses.length; i++) {
         var bus = buses.buses[i];
         var time = dateFormat(bus.time, "HH:MM:ss");
+        var delta = dateFormat(new Date(bus.time) - this._date, "M");
 
         var busDom = document.createElement("div");
         busDom.className = "item";
-        busDom.innerHTML = `${bus.status} ${time}`;
+        busDom.innerHTML = `${bus.name} | ${bus.status} | ${delta}m`;
         dom.appendChild(busDom);
       };
     };
