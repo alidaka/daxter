@@ -44,17 +44,16 @@ exports.buses = function (req, res) {
 
       if (entry.predicted && entry.predictedTime !== null) {
         time = entry.predictedArrivalTime;
-        delta = time - entry.scheduledArrivalTime;
+        delta = Math.round((time - entry.scheduledArrivalTime) / 1000 / 60);
 
-        if (delta > 0)      { status = 'late'; }
-        else if (delta < 0) { status = 'early'; }
-        else                { status = 'scheduled'; }
+        if (delta > 0)      { status = `${Math.abs(delta)}m delay`; }
+        else if (delta < 0) { status =  `${Math.abs(delta)}m early`; }
+        else                { status = 'on schedule'; }
       }
 
       return {
         'status': status,
         'time': time,
-        'delta': Math.abs(delta)
       };
     };
 

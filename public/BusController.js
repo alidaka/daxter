@@ -18,9 +18,11 @@
     _updateBuses(buses, dom) {
       for (var i = 0; i < buses.buses.length; i++) {
         var bus = buses.buses[i];
+        var time = dateFormat(bus.time, "HH:MM:ss");
+
         var busDom = document.createElement("div");
-        busDom.className = "container";
-        busDom.innerHTML = `${bus.status} ${bus.time} ${bus.delta}`;
+        busDom.className = "item";
+        busDom.innerHTML = `${bus.status} ${time}`;
         dom.appendChild(busDom);
       };
     };
