@@ -23,6 +23,10 @@ html, body {
   font-size: 24px;
 }
 
+.weather-title {
+  margin-top: 128px;
+}
+
 .dashboard {
   display: flex;
   width: 100%;

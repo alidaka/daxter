@@ -76,6 +76,7 @@
     _addTitle(weather, dom) {
       var titleRow = document.createElement("div");
       titleRow.className = "container";
+      titleRow.classList.add('weather-title');
       titleRow.appendChild(this._spacer());
 
       var forecastHours = 4;
