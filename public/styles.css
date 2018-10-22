@@ -47,6 +47,15 @@ html, body {
 }
 
 .buses {
+  display: flex;
   flex-direction: column;
   font-size: 48px;
+}
+
+.bus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
 }
