@@ -77,7 +77,6 @@
       var titleRow = document.createElement("div");
       titleRow.className = "container";
       titleRow.classList.add('weather-title');
-      titleRow.appendChild(this._spacer());
 
       var forecastHours = 4;
       var current = document.createElement("div");
@@ -96,6 +95,7 @@
         current.appendChild(currentTop);
       current.style["flex"] = 1 + forecastHours;
       titleRow.appendChild(current);
+      /*
       titleRow.appendChild(this._spacer());
 
       for (var i = 0; i < forecastHours; i++) {
@@ -107,6 +107,7 @@
         titleRow.appendChild(daily);
         titleRow.appendChild(this._spacer());
       }
+      */
 
       dom.appendChild(titleRow);
 
@@ -125,6 +126,8 @@
       var red = 255 * (Math.max(0, high - 40) / 40);
       var backgroundColor = "rgba(" + Math.trunc(red) + ", 0, " + Math.trunc(blue) + ", .5)";
 
+      var pointStyles = weather.hourly.map(h => h.icon).map(this._iconFor);
+
       var config = {
         type: "line",
         data: {
@@ -133,7 +136,8 @@
             backgroundColor: backgroundColor,
             data: data,
             fill: "origin"
-          }]
+          }],
+          pointStyle: pointStyles
         },
         options: {
           legend: {
